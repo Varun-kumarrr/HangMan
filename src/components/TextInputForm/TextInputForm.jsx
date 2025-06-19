@@ -1,31 +1,10 @@
 import TextInput from "../TextInput/TextInput";
 import Button from "../Button/Button"
-import { useState } from "react";
 
-function TextInputForm({onSubmit}) {
 
-    const [value,setValue] = useState('');
-    const [togle,setTogle] = useState('password');
+function TextInputForm({viewText , handleFormSubmit , handleTextInputChange , value , togle}) {
 
-    function viewText(event)
-    {
-        event.preventDefault();
-        setTogle(prev => prev === 'password' ? 'text' : 'password');
-    }
-
-    function handleFormSubmit(event)
-    {
-        event.preventDefault();
-        console.log("form submitted",value);
-        onSubmit?.(value);
-        
-    }
-
-    function handleTextInputChange(event)
-    {
-        console.log(event.target.value);
-        setValue(event.target.value);
-    }
+    
 
     return (
         <form className="flex items-end" onSubmit={handleFormSubmit}>
@@ -48,7 +27,7 @@ function TextInputForm({onSubmit}) {
             <div>
                 <Button
                 text = "OK"
-                type = "submit"
+                buttonType = "submit"
                 />
             </div>
         </form>
