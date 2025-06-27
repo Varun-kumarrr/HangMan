@@ -1,19 +1,21 @@
 import { getAllCharacters } from "./MaskedTextUtility";
 
-function MaskedText({text,usedLetters})
-{
-    const letters = getAllCharacters(text,usedLetters).split('');
+function MaskedText({ text, usedLetters }) {
+  if (!text) return <div className="text-red-400">No word selected</div>;
 
-    return (
-        <>
-        <div>{letters.map((letter,index)=>{
-            return(
-                <span key={`letter-${index}`} className="inline-block mx-1">{letter}</span>
-            );
-        })}</div>
-        </>
-    );
+  const letters = getAllCharacters(text, usedLetters).split('');
+
+  return (
+    <div>
+      {letters.map((letter, index) => (
+        <span key={`letter-${index}`} className="inline-block mx-1">
+          {letter}
+        </span>
+      ))}
+    </div>
+  );
 }
+
 
 
 

@@ -1,11 +1,10 @@
 export function getAllCharacters(word, usedLetters) {
-    usedLetters = usedLetters.map((ele) => ele.toUpperCase());
-    const guessedLetters = new Set(usedLetters);
-    const characters = word.toUpperCase().split('').map((char) => {
-        if (guessedLetters.has(char)) {
-            return char;
-        }
-        return '_';
-    });
-    return characters.join('');
+  if (typeof word !== 'string') return '';
+
+  usedLetters = usedLetters.map((ele) => ele.toUpperCase());
+  const guessedLetters = new Set(usedLetters);
+
+  return word.toUpperCase().split('').map((char) => {
+    return guessedLetters.has(char) ? char : '_';
+  }).join('');
 }
